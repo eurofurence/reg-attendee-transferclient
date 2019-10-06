@@ -1,0 +1,5 @@
+regsys:
+  url: 'http://localhost:8080/regsys'
+  token: 'put_secure_random_string_here_for_admin_token'
+attendee-service:
+  url: 'http://localhost:9091'
