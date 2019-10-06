@@ -11,7 +11,7 @@ func main() {
 	config.LoadConfiguration()
 
 	for {
-		log.Println("sleeping for 30 seconds between runs, press Ctrl-C to terminate this process")
+		log.Println("DEBUG sleeping for 30 seconds between runs, press Ctrl-C to terminate this process")
 		time.Sleep(30 * time.Second)
 
 		regsysMax, err := client.RetrieveRegsysMaxId()
