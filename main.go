@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/jumpy-squirrel/rexis-go-transferclient/internal/repository/client"
-	"github.com/jumpy-squirrel/rexis-go-transferclient/internal/repository/config"
+	"github.com/eurofurence/reg-attendee-transferclient/internal/repository/client"
+	"github.com/eurofurence/reg-attendee-transferclient/internal/repository/config"
 	"log"
 	"time"
 )
@@ -20,7 +20,7 @@ func main() {
 			if err == nil {
 				if regsysMax >= serviceMax {
 					log.Printf("INFO  nothing to do, regsys max id %v, service max id %v", regsysMax, serviceMax)
-				} else if regsysMax == 0 || serviceMax == 0 {
+				} else if serviceMax == 0 {
 					log.Printf("INFO  skipping transfer due to 0, regsys max id %v, service max id %v", regsysMax, serviceMax)
 				} else {
 					log.Printf("INFO  initiating transfers, regsys max id %v, service max id %v", regsysMax, serviceMax)

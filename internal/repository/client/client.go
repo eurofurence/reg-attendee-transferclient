@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/jumpy-squirrel/rexis-go-transferclient/internal/repository/config"
+	"github.com/eurofurence/reg-attendee-transferclient/internal/repository/config"
 	"io/ioutil"
 	"log"
 	"net/http"
