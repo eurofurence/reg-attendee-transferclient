@@ -2,6 +2,8 @@
 
 ## Transfer Client Overview
 
+### Overview
+
 Implements a simple transfer client that periodically gets the maximum assigned attendee id from the go attendee service
 
 ```GET http://localhost:9091/api/rest/v1/attendees/max-id```
@@ -16,26 +18,27 @@ and then transfers any missing registrations to the regsys via its transfer api
 
 where all the URLs as well as the transfer api token are read from a file called ```config.yaml```.  
 
-## Contract Tests Overview
+### Go Dependencies
 
-A very minimal example for using pact-go for consumer driven contract tests.
+The regular go dependencies will be downloaded by go build / go test, because this project uses 
+[go modules](https://blog.golang.org/using-go-modules).
+
+_Note that in order for modules to kick in when building it, this source must reside OUTSIDE your go path._
+
+## Contract Tests
+
+This client also serves as a simple example for using pact-go for consumer driven contract tests.
 
 This is the consumer side. 
 
-See [rexis-go-attendee](https://github.com/jumpy-squirrel/rexis-go-attendee) for the producer side.
-
-### Scenario
-
-This simulates a microservice that wants to call another microservice, the Attendee Service.
-
-Specifically, it wants to call its /info/health endpoint (a very contrived example for simplicity's sake).
+See [reg-attendee-service](https://github.com/eurofurence/reg-attendee-service) for the producer side.
 
 ### Solution Concept
 
 In order to automatically verify that the interaction will work as expected, we have implemented the 
 consumer side of a consumer driven contract test (see `test/contract/consumer/main_ctr_test.go`).
 
-When the test suite of this "microservice" runs, the consumer side test is run, and a pact json is written out.
+When the test suite of this client runs, the consumer side test is run, and a pact json is written out.
 
 _Note how the consumer test calls into a very low level function, the one that uses a httpclient to make the call. 
 So we are not testing the business logic, only the actual technical client code._
@@ -46,7 +49,7 @@ _Again, we use a mock service underneath the web controller to only test the tec
 not the business logic. This is easy to do using a httptest server._
 
 _In a more real world example you'd have some way to publish the generated pact jsons to a server and/or
-check them into a repository. The producer side test can then use a URL on this server to get at the current
+check them into a repository. The producer side test can then use a URL on this server to download the current
 pact json._
 
 ### Installation of Pact
@@ -55,27 +58,17 @@ Download and install the pact command line tools and add them to your path as de
 [pact-go manual](https://github.com/pact-foundation/pact-go#installation). This step is system
 dependent.
 
-### Go Dependencies
-
-The regular go dependencies will be downloaded by go build / go test, because this project uses 
-[go modules](https://blog.golang.org/using-go-modules).
-
-_Note that in order for modules to kick in when building it, this source must reside OUTSIDE your go path.
-At least it did for me._
-
 ### Run The Contract Tests
 
-The main program isn't really of interest.
+Use
 
-Instead, use
-
-`go test -v github.com/jumpy-squirrel/rexis-go-democlient/...`
+`go test -v github.com/eurofurence/reg-attendee-transferclient/...`
 
 to run the consumer side test and generate the pact json file.
 
 Then do the same in the producer project.
 
-`go test -v github.com/jumpy-squirrel/rexis-go-attendee/...`
+`go test -v github.com/eurofurence/reg-attendee-service/...`
 
 You should see output like this:
 
