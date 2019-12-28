@@ -4,3 +4,6 @@ config.yaml
 test/contract/*/log/**
 test/contract/consumer/logs/**
 test/contract/consumer/pacts/**
+attendee-transfer-client
+main
+
