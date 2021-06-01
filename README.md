@@ -1,5 +1,8 @@
 # reg-attendee-transferclient
 
+<img src="https://github.com/eurofurence/reg-attendee-transferclient/actions/workflows/go.yml/badge.svg" alt="test status"/>
+<img src="https://github.com/eurofurence/reg-attendee-transferclient/actions/workflows/codeql-analysis.yml/badge.svg" alt="code quality status"/>
+
 ## Transfer Client Overview
 
 ### Overview
