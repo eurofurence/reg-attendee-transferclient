@@ -1,3 +1,7 @@
+# Deprecation Notice
+
+ARCHIVED - this component is no longer needed after we've migrated away from the old regsys
+
 # reg-attendee-transferclient
 
 <img src="https://github.com/eurofurence/reg-attendee-transferclient/actions/workflows/go.yml/badge.svg" alt="test status"/>
